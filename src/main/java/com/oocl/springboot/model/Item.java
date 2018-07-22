@@ -9,7 +9,14 @@ public class Item {
     private String content;
     private boolean checked;
 
+    public Item(String id, String content, boolean checked) {
+        this.id = id;
+        this.content = content;
+        this.checked = checked;
+    }
+
     public String getId() {
+
         return id;
     }
 
