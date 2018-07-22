@@ -1,6 +1,6 @@
-package controller;
+package com.oocl.springboot.controller;
 import java.util.concurrent.atomic.AtomicLong;
-import model.Greeting;
+import com.oocl.springboot.model.Greeting;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;

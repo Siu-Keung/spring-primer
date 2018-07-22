@@ -1,4 +1,4 @@
-package model;
+package com.oocl.springboot.model;
 
 /**
  * @author Dylan Wei
