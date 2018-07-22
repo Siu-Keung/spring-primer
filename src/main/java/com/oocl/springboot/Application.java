@@ -14,9 +14,6 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
-    public GreetingController greetingController(){
-        return new GreetingController();
-    }
+
 
 }
