@@ -6,7 +6,6 @@ import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.UUID;
@@ -50,6 +49,13 @@ public class TodoListController {
         response.addHeader("Access-Control-Allow-Origin", "*");
         Item targetItem = this.datas.getItems().stream().filter(item -> item.getId().equals(id)).findFirst().get();
         targetItem.setChecked(!targetItem.isChecked());
+        return "succeeded";
+    }
+
+    @RequestMapping(value = "/updateItemContent/{id}", method = RequestMethod.POST)
+    public String updateItemContent(@PathVariable("id")String id, String newContent, HttpServletResponse response){
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        this.datas.getItems().stream().filter(item -> item.getId().equals(id)).findFirst().get().setContent(newContent);
         return "succeeded";
     }
 
