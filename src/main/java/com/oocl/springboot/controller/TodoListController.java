@@ -2,6 +2,7 @@ package com.oocl.springboot.controller;
 
 import com.oocl.springboot.model.Item;
 import com.oocl.springboot.model.TodoDataModel;
+import com.sun.deploy.net.HttpResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,8 +24,9 @@ public class TodoListController {
     @Autowired
     private TodoDataModel datas;
 
-    @RequestMapping("/getItems/{filter}")
-    public List<Item> getItemsByFilter(@PathVariable("filter") String filter) {
+    @RequestMapping(value = "/getItems/{filter}")
+    public List<Item> getItemsByFilter(@PathVariable("filter") String filter, HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", "*");
         switch (filter) {
             case "全部":
                 return this.datas.getItems();
